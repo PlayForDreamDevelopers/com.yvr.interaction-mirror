@@ -8,6 +8,7 @@ using UnityEngine.XR;
 using UnityEngine.XR.Hands;
 using UnityEngine.XR.Interaction.Toolkit.Inputs;
 using YVR.Core;
+using YVR.Core.XR.InputDevices;
 using YVR.Interaction.Runtime.InputDeviceModeFactory;
 using YVR.Utilities;
 using CommonUsages = UnityEngine.InputSystem.CommonUsages;

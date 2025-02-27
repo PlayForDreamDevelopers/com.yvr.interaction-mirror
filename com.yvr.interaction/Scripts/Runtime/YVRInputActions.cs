@@ -2589,7 +2589,7 @@ namespace YVR.Interaction.Runtime
                 {
                     ""name"": """",
                     ""id"": ""654f7f91-f877-4f13-b426-b0577185ef90"",
-                    ""path"": ""<YVREyeDevice>/eyesData/rightEyePosition"",
+                    ""path"": ""<YVREyeDevice>/devicePosition"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -2600,7 +2600,7 @@ namespace YVR.Interaction.Runtime
                 {
                     ""name"": """",
                     ""id"": ""cf62b816-9dbd-4f36-874b-2f13c4a3ad9a"",
-                    ""path"": ""<YVREyeDevice>/eyesData/rightEyeRotation"",
+                    ""path"": ""<YVREyeDevice>/deviceRotation"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

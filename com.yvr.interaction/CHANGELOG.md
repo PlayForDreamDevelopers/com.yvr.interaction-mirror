@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.6.28] - 2025-02-26
+
+### Changed
+
+- 更新 Eye Device Action Reference
+
+## [0.6.27] - 2025-02-26
+
+### Added
+
+- 使用新的眼动设备定义 Input Actions
+
+## [0.6.26] - 2025-02-26
+
+### Changed
+
+- 移除在 Core 中定义的 InputDevices
+
 ## [0.6.25] - 2025-02-07
 
 ### Changed
