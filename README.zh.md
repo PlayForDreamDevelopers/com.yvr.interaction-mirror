@@ -25,7 +25,7 @@
 
 ## 关于项目
 
-这是 `com.yvr.interaction-mirror` 包的镜像仓库。
+这是 `com.yvr.interaction` 包的镜像仓库。
 
 ### 示例
 

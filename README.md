@@ -25,7 +25,7 @@
 
 ## About The Project
 
-This is a mirror repository of the package `com.yvr.interaction-mirror`. 
+This is a mirror repository of the package `com.yvr.interaction`. 
 
 ### Samples
 
