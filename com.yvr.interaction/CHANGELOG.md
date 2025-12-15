@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.1] - 2025-12-15
+
+### Changed
+
+- 切换至手柄时，不停止 XRHandSubsystem
+
 ## [0.7.0] - 2025-12-08
 
 ### Changed
