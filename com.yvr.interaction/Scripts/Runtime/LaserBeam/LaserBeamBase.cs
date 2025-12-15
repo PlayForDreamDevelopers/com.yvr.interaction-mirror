@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
@@ -27,8 +28,17 @@ namespace YVR.Interaction.Runtime
             endColor = new Color32(23, 92, 230, 0),
         };
 
+        private void Awake()
+        {
+            Application.onBeforeRender += OnUpdate;
+        }
 
-        private void LateUpdate()
+        private void OnDestroy()
+        {
+            Application.onBeforeRender -= OnUpdate;
+        }
+
+        private void OnUpdate()
         {
             if (isShowCursor)
             {

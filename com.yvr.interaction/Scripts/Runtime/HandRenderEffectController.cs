@@ -8,17 +8,16 @@ namespace YVR.Interaction.Runtime
 {
     public class HandRenderEffectController : MonoBehaviour
     {
+        public Handedness handedness;
         public GameObject pointer;
-        public Handedness handType;
         public SkinnedMeshRenderer handSkinnedMeshRenderer;
         public InputActionProperty pointerPosition;
         public InputActionProperty pointerRotation;
         public InputActionProperty pinchStrength;
         public InputActionProperty aimflag;
-        public Transform jointThumbTip;
-        public Transform jointIndexTip;
         public XRRayInteractor handRayInteractor;
         public bool pointerEnable = true;
+        public float pointerZOffset = 0;
         private MaterialPropertyBlock m_HandMaterialPropertyBlock;
         private MaterialPropertyBlock m_PointerMaterialPropertyBlock;
         private MeshRenderer m_PointerMeshRenderer;
@@ -33,7 +32,6 @@ namespace YVR.Interaction.Runtime
         private string m_ForceState = "_ForceState";
         private float m_ForceStateMax = 1;
         private float m_PinchFactor;
-        private float m_PointerZOffset = 0.05f;
         private Transform m_PointerTransform;
         private int m_SoftMinPropertyID;
         private int m_SoftMaxPropertyID;
@@ -63,16 +61,16 @@ namespace YVR.Interaction.Runtime
         {
             if (pointer == null) return;
 
+            var handStatus =  aimflag.action.ReadValue<int>();
             bool showPointerWhenTracking
-                = ((HandStatus)aimflag.action.ReadValue<int>() & HandStatus.InputStateValid) != 0 &&
-                  !handRayInteractor.IsBlockedByInteractionWithinGroup() && pointerEnable;
+                = (handStatus & (int)HandStatus.InputStateValid) != 0 && (handStatus & 536870912) == 0
+                    && !handRayInteractor.IsBlockedByInteractionWithinGroup() && pointerEnable;
 
             if (showPointerWhenTracking)
             {
                 pointer.SetActive(true);
-                // Vector3 pointerPosition = (2 * jointThumbTip.position + jointIndexTip.position) / 3;
 
-                m_PointerTransform.position = pointerPosition.action.ReadValue<Vector3>() + m_PointerTransform.up * m_PointerZOffset;
+                m_PointerTransform.position = pointerPosition.action.ReadValue<Vector3>() + m_PointerTransform.up * pointerZOffset;
                 m_PointerTransform.rotation = pointerRotation.action.ReadValue<Quaternion>() *
                                               Quaternion.AngleAxis(90, Vector3.right);
                 if (m_IndexFingerPinchStrength >= m_CompressLimit)

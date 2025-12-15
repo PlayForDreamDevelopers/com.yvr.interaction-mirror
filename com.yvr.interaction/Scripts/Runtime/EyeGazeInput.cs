@@ -70,7 +70,6 @@ namespace YVR.Interaction.Runtime
         {
             yvrInputActions.YVRLeft.IndexPressed.started += (context) =>
             {
-                Debug.LogError($"SetLeftHandInput left index pressed");
                 if (!m_WasPressed)
                 {
                     dragInputHand = InteractorHandedness.Left;

@@ -4,11 +4,11 @@ using System.Linq;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.XR.Hands;
+using YVR.Core;
+using XRHandFingerID = UnityEngine.XR.Hands.XRHandFingerID;
 
 namespace YVR.Interaction.Runtime
 {
-// 1. 重写 FindJointsFromRoot 方法适配 YVR 中手部骨骼的命名规则，
-// 2. 以及修改 OnJointsUpdated 方法适配 YVR 中手部骨骼的更新方式(YVR 中手部模型与 Unity XRHand 模型不一致，差异在 Z 轴上的旋转角度不同，需要重新计算手部骨骼的本地坐标系)
     public class YVRHandSkeletonDriver : XRHandSkeletonDriver
     {
         [SerializeField] private SkinnedMeshRenderer m_MeshRenderer;
@@ -159,8 +159,21 @@ namespace YVR.Interaction.Runtime
         {
             if (!willUpdateSkeleton) return;
 
+            UpdateHandScale();
             UpdateJointLocalPoses(args);
             ApplyUpdatedTransformPoses();
+        }
+
+        private void UpdateHandScale()
+        {
+            var scale = handTrackingEvents.handedness == Handedness.Left
+                ? YVRHandManager.instance.leftHandData.handScale
+                : YVRHandManager.instance.rightHandData.handScale;
+           var handScale = Vector3.one * Mathf.Clamp(scale, 0.1f, 1.5f);
+
+           if (rootTransform.transform.localScale != handScale)
+               rootTransform.transform.localScale = handScale;
+
         }
 
         protected override void ApplyUpdatedTransformPoses()
@@ -206,15 +219,15 @@ namespace YVR.Interaction.Runtime
         }
 
         private void ChangeJointsOrientation(ref XRHandJointsUpdatedEventArgs args,
-                                             ref NativeArray<Pose> jointLocalPoses)
+            ref NativeArray<Pose> jointLocalPoses)
         {
             for (int i = 0; i < jointLocalPoses.Length; i++)
             {
-                args.hand.GetJoint((XRHandJointID) (i + 1)).TryGetPose(out var jointpose);
+                args.hand.GetJoint((XRHandJointID)(i + 1)).TryGetPose(out var jointpose);
                 Quaternion rot = jointpose.rotation;
                 Pose covertpose;
                 covertpose.position = jointpose.position;
-                covertpose.rotation = rot * Quaternion.AngleAxis(180f, Vector3.up);
+                covertpose.rotation = rot;
                 jointLocalPoses[i] = covertpose;
             }
         }

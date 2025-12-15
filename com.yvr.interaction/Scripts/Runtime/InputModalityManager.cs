@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.Profiling;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
 using UnityEngine.XR.Hands;
@@ -47,8 +48,8 @@ namespace YVR.Interaction.Runtime
 
         private static TrackedDevice s_EyeTracking = null;
 
-        private static TrackedDevice eyeTracking =>
-            s_EyeTracking ??= InputSystem.GetDevice<YVREyeDevice>("EyesTracking");
+        public static TrackedDevice eyeTracking =>
+            s_EyeTracking ??= InputSystem.GetDevice<YVREyeDevice>();
 
         #endregion
 
@@ -105,6 +106,9 @@ namespace YVR.Interaction.Runtime
                 handSubsystem.Start();
             else
                 handSubsystem.Stop();
+
+            YVRManager.instance.eventsManager.onFocusGained += () => { EventSystem.current.currentInputModule.enabled = true; };
+            YVRManager.instance.eventsManager.onFocusLost += () => { EventSystem.current.currentInputModule.enabled = false; };
         }
 
         public void SetInputDeviceMode(BaseInputDeviceFactory inputDeviceFactory)
@@ -175,12 +179,9 @@ namespace YVR.Interaction.Runtime
                 YVRAimHand.right?.Destroy();
                 s_RightHand = null;
                 s_LeftHand = null;
-                if (requireHandSubsystem) handSubsystem?.Stop();
             }
             else
             {
-                if (requireHandSubsystem) handSubsystem?.Start();
-
                 if (YVRAimHand.left == null)
                     YVRAimHand.CreateHand(InputDeviceCharacteristics.Left);
                 if (YVRAimHand.right == null)

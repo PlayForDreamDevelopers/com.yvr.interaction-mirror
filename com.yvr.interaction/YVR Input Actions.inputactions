@@ -409,6 +409,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Pinch Rotation",
+                    "type": "Button",
+                    "id": "67bcd5ae-2700-47c2-a9aa-0970a88a34a4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Poke Position",
                     "type": "Value",
                     "id": "4c557d81-3795-4355-a83e-6f886221d011",
@@ -767,7 +776,7 @@
                 {
                     "name": "",
                     "id": "f7a37505-52bd-4a96-8f88-c761a62a71e7",
-                    "path": "<XRHandDevice>{LeftHand}/pinchPosition",
+                    "path": "<YVRAimHand>{LeftHand}/devicePosition",
                     "interactions": "",
                     "processors": "",
                     "groups": "HandTracking",
@@ -1069,6 +1078,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "IndexPressValue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "69f79941-d774-45d4-903b-69ff1d05d999",
+                    "path": "<YVRAimHand>{LeftHand}/deviceRotation",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";HandTracking",
+                    "action": "Pinch Rotation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1507,6 +1527,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Pinch Rotation",
+                    "type": "Button",
+                    "id": "f2c8f40c-1360-47d0-b754-183e919de768",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Poke Position",
                     "type": "Value",
                     "id": "496d56bd-afd7-495b-a326-16e4ef742bc1",
@@ -1865,7 +1894,7 @@
                 {
                     "name": "",
                     "id": "21413a94-0048-4112-b433-a770f183f592",
-                    "path": "<XRHandDevice>{RightHand}/pinchPosition",
+                    "path": "<YVRAimHand>{RightHand}/devicePosition",
                     "interactions": "",
                     "processors": "",
                     "groups": "HandTracking",
@@ -2167,6 +2196,17 @@
                     "processors": "",
                     "groups": ";HandTracking",
                     "action": "IndexPressValue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6b2166a7-7d98-49b1-b613-4d895ba27109",
+                    "path": "<YVRAimHand>{RightHand}/deviceRotation",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";HandTracking",
+                    "action": "Pinch Rotation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

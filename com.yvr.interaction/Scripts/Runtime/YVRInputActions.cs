@@ -434,6 +434,15 @@ namespace YVR.Interaction.Runtime
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Pinch Rotation"",
+                    ""type"": ""Button"",
+                    ""id"": ""67bcd5ae-2700-47c2-a9aa-0970a88a34a4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Poke Position"",
                     ""type"": ""Value"",
                     ""id"": ""4c557d81-3795-4355-a83e-6f886221d011"",
@@ -792,7 +801,7 @@ namespace YVR.Interaction.Runtime
                 {
                     ""name"": """",
                     ""id"": ""f7a37505-52bd-4a96-8f88-c761a62a71e7"",
-                    ""path"": ""<XRHandDevice>{LeftHand}/pinchPosition"",
+                    ""path"": ""<YVRAimHand>{LeftHand}/devicePosition"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""HandTracking"",
@@ -1094,6 +1103,17 @@ namespace YVR.Interaction.Runtime
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""IndexPressValue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""69f79941-d774-45d4-903b-69ff1d05d999"",
+                    ""path"": ""<YVRAimHand>{LeftHand}/deviceRotation"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";HandTracking"",
+                    ""action"": ""Pinch Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1532,6 +1552,15 @@ namespace YVR.Interaction.Runtime
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Pinch Rotation"",
+                    ""type"": ""Button"",
+                    ""id"": ""f2c8f40c-1360-47d0-b754-183e919de768"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Poke Position"",
                     ""type"": ""Value"",
                     ""id"": ""496d56bd-afd7-495b-a326-16e4ef742bc1"",
@@ -1890,7 +1919,7 @@ namespace YVR.Interaction.Runtime
                 {
                     ""name"": """",
                     ""id"": ""21413a94-0048-4112-b433-a770f183f592"",
-                    ""path"": ""<XRHandDevice>{RightHand}/pinchPosition"",
+                    ""path"": ""<YVRAimHand>{RightHand}/devicePosition"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""HandTracking"",
@@ -2192,6 +2221,17 @@ namespace YVR.Interaction.Runtime
                     ""processors"": """",
                     ""groups"": "";HandTracking"",
                     ""action"": ""IndexPressValue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6b2166a7-7d98-49b1-b613-4d895ba27109"",
+                    ""path"": ""<YVRAimHand>{RightHand}/deviceRotation"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";HandTracking"",
+                    ""action"": ""Pinch Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -2690,6 +2730,7 @@ namespace YVR.Interaction.Runtime
             m_YVRLeft_AimRotation = m_YVRLeft.FindAction("Aim Rotation", throwIfNotFound: true);
             m_YVRLeft_AimFlags = m_YVRLeft.FindAction("Aim Flags", throwIfNotFound: true);
             m_YVRLeft_PinchPosition = m_YVRLeft.FindAction("Pinch Position", throwIfNotFound: true);
+            m_YVRLeft_PinchRotation = m_YVRLeft.FindAction("Pinch Rotation", throwIfNotFound: true);
             m_YVRLeft_PokePosition = m_YVRLeft.FindAction("Poke Position", throwIfNotFound: true);
             m_YVRLeft_PokeRotation = m_YVRLeft.FindAction("Poke Rotation", throwIfNotFound: true);
             m_YVRLeft_GripPosition = m_YVRLeft.FindAction("Grip Position", throwIfNotFound: true);
@@ -2736,6 +2777,7 @@ namespace YVR.Interaction.Runtime
             m_YVRRight_AimRotation = m_YVRRight.FindAction("Aim Rotation", throwIfNotFound: true);
             m_YVRRight_AimFlags = m_YVRRight.FindAction("Aim Flags", throwIfNotFound: true);
             m_YVRRight_PinchPosition = m_YVRRight.FindAction("Pinch Position", throwIfNotFound: true);
+            m_YVRRight_PinchRotation = m_YVRRight.FindAction("Pinch Rotation", throwIfNotFound: true);
             m_YVRRight_PokePosition = m_YVRRight.FindAction("Poke Position", throwIfNotFound: true);
             m_YVRRight_PokeRotation = m_YVRRight.FindAction("Poke Rotation", throwIfNotFound: true);
             m_YVRRight_GripPosition = m_YVRRight.FindAction("Grip Position", throwIfNotFound: true);
@@ -2959,6 +3001,7 @@ namespace YVR.Interaction.Runtime
         private readonly InputAction m_YVRLeft_AimRotation;
         private readonly InputAction m_YVRLeft_AimFlags;
         private readonly InputAction m_YVRLeft_PinchPosition;
+        private readonly InputAction m_YVRLeft_PinchRotation;
         private readonly InputAction m_YVRLeft_PokePosition;
         private readonly InputAction m_YVRLeft_PokeRotation;
         private readonly InputAction m_YVRLeft_GripPosition;
@@ -2993,6 +3036,7 @@ namespace YVR.Interaction.Runtime
             public InputAction @AimRotation => m_Wrapper.m_YVRLeft_AimRotation;
             public InputAction @AimFlags => m_Wrapper.m_YVRLeft_AimFlags;
             public InputAction @PinchPosition => m_Wrapper.m_YVRLeft_PinchPosition;
+            public InputAction @PinchRotation => m_Wrapper.m_YVRLeft_PinchRotation;
             public InputAction @PokePosition => m_Wrapper.m_YVRLeft_PokePosition;
             public InputAction @PokeRotation => m_Wrapper.m_YVRLeft_PokeRotation;
             public InputAction @GripPosition => m_Wrapper.m_YVRLeft_GripPosition;
@@ -3050,6 +3094,9 @@ namespace YVR.Interaction.Runtime
                 @PinchPosition.started += instance.OnPinchPosition;
                 @PinchPosition.performed += instance.OnPinchPosition;
                 @PinchPosition.canceled += instance.OnPinchPosition;
+                @PinchRotation.started += instance.OnPinchRotation;
+                @PinchRotation.performed += instance.OnPinchRotation;
+                @PinchRotation.canceled += instance.OnPinchRotation;
                 @PokePosition.started += instance.OnPokePosition;
                 @PokePosition.performed += instance.OnPokePosition;
                 @PokePosition.canceled += instance.OnPokePosition;
@@ -3144,6 +3191,9 @@ namespace YVR.Interaction.Runtime
                 @PinchPosition.started -= instance.OnPinchPosition;
                 @PinchPosition.performed -= instance.OnPinchPosition;
                 @PinchPosition.canceled -= instance.OnPinchPosition;
+                @PinchRotation.started -= instance.OnPinchRotation;
+                @PinchRotation.performed -= instance.OnPinchRotation;
+                @PinchRotation.canceled -= instance.OnPinchRotation;
                 @PokePosition.started -= instance.OnPokePosition;
                 @PokePosition.performed -= instance.OnPokePosition;
                 @PokePosition.canceled -= instance.OnPokePosition;
@@ -3371,6 +3421,7 @@ namespace YVR.Interaction.Runtime
         private readonly InputAction m_YVRRight_AimRotation;
         private readonly InputAction m_YVRRight_AimFlags;
         private readonly InputAction m_YVRRight_PinchPosition;
+        private readonly InputAction m_YVRRight_PinchRotation;
         private readonly InputAction m_YVRRight_PokePosition;
         private readonly InputAction m_YVRRight_PokeRotation;
         private readonly InputAction m_YVRRight_GripPosition;
@@ -3405,6 +3456,7 @@ namespace YVR.Interaction.Runtime
             public InputAction @AimRotation => m_Wrapper.m_YVRRight_AimRotation;
             public InputAction @AimFlags => m_Wrapper.m_YVRRight_AimFlags;
             public InputAction @PinchPosition => m_Wrapper.m_YVRRight_PinchPosition;
+            public InputAction @PinchRotation => m_Wrapper.m_YVRRight_PinchRotation;
             public InputAction @PokePosition => m_Wrapper.m_YVRRight_PokePosition;
             public InputAction @PokeRotation => m_Wrapper.m_YVRRight_PokeRotation;
             public InputAction @GripPosition => m_Wrapper.m_YVRRight_GripPosition;
@@ -3462,6 +3514,9 @@ namespace YVR.Interaction.Runtime
                 @PinchPosition.started += instance.OnPinchPosition;
                 @PinchPosition.performed += instance.OnPinchPosition;
                 @PinchPosition.canceled += instance.OnPinchPosition;
+                @PinchRotation.started += instance.OnPinchRotation;
+                @PinchRotation.performed += instance.OnPinchRotation;
+                @PinchRotation.canceled += instance.OnPinchRotation;
                 @PokePosition.started += instance.OnPokePosition;
                 @PokePosition.performed += instance.OnPokePosition;
                 @PokePosition.canceled += instance.OnPokePosition;
@@ -3556,6 +3611,9 @@ namespace YVR.Interaction.Runtime
                 @PinchPosition.started -= instance.OnPinchPosition;
                 @PinchPosition.performed -= instance.OnPinchPosition;
                 @PinchPosition.canceled -= instance.OnPinchPosition;
+                @PinchRotation.started -= instance.OnPinchRotation;
+                @PinchRotation.performed -= instance.OnPinchRotation;
+                @PinchRotation.canceled -= instance.OnPinchRotation;
                 @PokePosition.started -= instance.OnPokePosition;
                 @PokePosition.performed -= instance.OnPokePosition;
                 @PokePosition.canceled -= instance.OnPokePosition;
@@ -3880,6 +3938,7 @@ namespace YVR.Interaction.Runtime
             void OnAimRotation(InputAction.CallbackContext context);
             void OnAimFlags(InputAction.CallbackContext context);
             void OnPinchPosition(InputAction.CallbackContext context);
+            void OnPinchRotation(InputAction.CallbackContext context);
             void OnPokePosition(InputAction.CallbackContext context);
             void OnPokeRotation(InputAction.CallbackContext context);
             void OnGripPosition(InputAction.CallbackContext context);
@@ -3928,6 +3987,7 @@ namespace YVR.Interaction.Runtime
             void OnAimRotation(InputAction.CallbackContext context);
             void OnAimFlags(InputAction.CallbackContext context);
             void OnPinchPosition(InputAction.CallbackContext context);
+            void OnPinchRotation(InputAction.CallbackContext context);
             void OnPokePosition(InputAction.CallbackContext context);
             void OnPokeRotation(InputAction.CallbackContext context);
             void OnGripPosition(InputAction.CallbackContext context);
